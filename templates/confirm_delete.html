@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Expense | SpendSmart Lite{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4 text-center">
+                <h2 class="fw-bold text-danger">Delete Expense?</h2>
+
+                <p class="mt-3">Are you sure you want to delete this expense?</p>
+
+                <div class="bg-light rounded p-3 mb-4">
+                    <h5>{{ expense.title }}</h5>
+                    <p class="mb-1">Category: {{ expense.category }}</p>
+                    <p class="mb-0 fw-bold">Amount: ₹{{ expense.amount }}</p>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        Yes, Delete
+                    </button>
+                    <a href="{% url 'dashboard' %}"
+                       class="btn btn-outline-secondary ms-2">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
